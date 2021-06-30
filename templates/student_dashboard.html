@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  {%load static%}
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="{% static 'student.css' %}">
+  <link rel=" stylesheet" href="{% static 'bootstrap-5.0.1-dist/bootstrap-5.0.1-dist/css/bootstrap.min.css'%}">
+  <link rel="stylesheet" href="{% static 'plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css' %}">
+  <!-- iCheck -->
+
+  <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
+  <!-- overlayScrollbars -->
+  <title>Student-Dashboard</title>
+</head>
+
+<body>
+
+  {%load static%}
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#"><span style="color: #00ffff;">TNP Portal</span></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+      aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        {% comment %} <li class="nav-item">
+          <a class="nav-link" href="">Home</a>
+        </li> {% endcomment %}
+        <li class="nav-item active">
+          <a class="nav-link" href="./edit">Update</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" onclick="addcrs()">Add Course</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" onclick="addprj()">Add Project</a>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" href="#" onclick="addprofile()">Add Profile</button>
+        </li>
+
+        <li class="nav-item">
+          <form action="logout" method="get">
+            <a class="nav-link" href="./logout">
+              <button style="background-color: white;">Logout</button></a>
+          </form>
+        </li>
+      </ul>
+      {% for st in context.student %}
+      <span class="navbar-text">
+
+        {{st.FName }} &nbsp;&nbsp;{{st.LName}} &nbsp;&nbsp;
+
+      </span>
+    </div>
+  </nav>
+  <div class=" con">
+    <div class="det">
+      <h3>Roll_Number:-{{st.RollNo}}</h3>
+      <h3>Email:-{{st.Email}}</h3>
+    </div>
+    {% endfor %}
+    <div class="cont">
+      <div class="chart">
+        <div class="skill">
+          <h2>SKILLS</h2>
+          {% for sk in context.skill %}
+          <h4>{{sk.SName}}</h4>
+          {% endfor %}
+        </div>
+
+        <div class=" coding" style="flex-direction: column;">
+          <h2>CODING PLATFORM USERNAME</h2>
+
+          <div class="det1">
+            {% for pr in context.profile %}
+            <h4>{{pr.Website}}</h4>
+            {% endfor %}
+
+          </div>
+        </div>
+      </div>
+      <div class="graph">
+        <h2>MARKS</h2>
+        <div id="sem"></div>
+      </div>
+    </div>
+
+    <div class="container-fluid" style="margin-top:5vh">
+      <div class="row" style="height: 5vh; margin-right: 0;
+      margin-left: 0;">
+        <div class="col-lg-3 ">
+          <!-- small box -->
+          <button class="small-box bg-info" style="height: 7vh; width: 100%;" onclick="courses()">
+            <div class="inner">
+              <h3>
+                Courses</h3>
+            </div>
+          </button>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 ">
+          <!-- small box -->
+          <button class="small-box bg-success" style="height: 7vh;width: 100%; " onclick="project()">
+            <div class="inner">
+              <h3>Projects</h3>
+            </div>
+          </button>
+        </div>
+        <div class="col-lg-3 ">
+          <!-- small box -->
+          <button class="small-box bg-danger" style="height: 7vh;width: 100%;" onclick="placements()">
+            <div class="inner">
+              <h3>Placements </h3>
+            </div>
+          </button>
+
+        </div>
+        <div class="col-lg-3 ">
+          <!-- small box -->
+          <button class="small-box bg-warning" style="height: 7vh;width: 100%;" onclick="company()">
+            <div class="inner">
+              <h3>Upcoming companies</h3>
+            </div>
+          </button>
+        </div>
+
+        <!-- ./col -->
+        <!-- ./col -->
+      </div>
+      <div class="placement" id="course" style="display: none;">
+        <h2>COURSES</h2>
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0" style="height: 50vh;">
+                <table class="table table-head-fixed text-nowrap cors">
+                  <thead>
+                    <tr>
+
+                      <th>S No.</th>
+                      <th>Organisation Name</th>
+                      <th>Course Name</th>
+                      <th>Course Id</th>
+                      <th>Certificate Link</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for crs in context.course %}
+                    <tr>
+                      <td></td>
+                      <td>{{crs.COrg}}</td>
+                      <td>{{crs.CName}}</td>
+                      <td>{{crs.CID}}</td>
+                      <td> <a href="{{crs.CLink}}"> {{crs.CLink}} </a></td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+      </div>
+      <div class="placement" id="project" style="display: none;">
+        <h2>PROJECT</h2>
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0" style="height: 50vh;">
+                <table class="table table-head-fixed text-nowrap pro">
+                  <thead>
+                    <tr>
+                      <th>S NO.</th>
+                      <th>Project Name</th>
+                      <th>Project Link</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for pr in context.project %}
+                    <tr>
+                      <td></td>
+                      <td>{{pr.PName}}</td>
+                      <td> <a href=" {{pr.PLink}}"> {{pr.PLink}}</a></td>
+                    </tr>
+                    {% endfor %}
+
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="placement" id="placements" style="display: none;">
+      <h2>PAST PLACEMENT RECORDS</h2>
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+
+            <!-- /.card-header -->
+            <div class="card-body table-responsive p-0" style="height: 50vh;">
+              <table class="table table-head-fixed text-nowrap place">
+                <thead>
+                  <tr>
+                    <th>S No.</th>
+                    <th>Company Name</th>
+                    <th>NO of students</th>
+                    <th>Average package</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for pl in context.record %}
+                  <tr>
+                    <td></td>
+                    <td>{{pl.CName}}</td>
+                    <td>{{pl.NoStudent}}</td>
+                    <td>{{pl.AvgPack}}</td>
+                  </tr>
+                  {% endfor %}
+
+                </tbody>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+      </div>
+    </div>
+    <div class="placement" id="company" style="display: none;">
+      <h2>UPCOMING COMPANIES</h2>
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+
+            <!-- /.card-header -->
+            <div class="card-body table-responsive p-0" style="height: 50vh;">
+              <table class="table table-head-fixed text-nowrap ">
+                <thead>
+                  <tr>
+                    <th>S No.</th>
+                    <th>Company Name</th>
+                    <th>Job Title</th>
+                    <th>Average package</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for up in context.upcoming %}
+                  <tr>
+                    <td></td>
+                    <td>{{up.CName}}</td>
+                    <td>{{up.JTitle}}</td>
+                    <td>{{up.Avg}}</td>
+                    <td>{{up.Date}}</td>
+                  </tr>
+                  {% endfor %}
+
+                </tbody>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <div id="addcrs" class="" style="display: none;">
+      <div class="container-fluid" style="border-radius: 100%;">
+        <div class="row" style="justify-content: center; align-items: center; height: 92vh; background-color:#FFE7C7">
+          <!-- left column -->
+          <div class="col-md-4" style="box-shadow: 6px 6px 20px #00000029;">
+            <!-- general form elements -->
+            <div class="card card-primary" style="margin-bottom: 0;">
+              <div class="card-header">
+                <h1 class="card-title" style="font-family: cursive;">ADD COURSE</h1>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form method="post" action="organization">
+                {% csrf_token %}
+                <div class="card-body" style="font-family: cursive; font-size: x-large;">
+                  <div class="form-group">
+                    <label>ORGANISATION</label>
+                    <input type="text" class="form-control" placeholder="Enter Organisation Name" name="COrg" required>
+                  </div>
+                  <div class="form-group">
+                    <label>COURSE NAME</label>
+                    <input type="text" class="form-control" placeholder="Course Name" name="CName" required>
+                  </div>
+                  <div class="form-group">
+                    <label>COURSE ID</label>
+                    <input type="text" class="form-control" placeholder="Course Id" name="CID" required>
+                  </div>
+                  <div class="form-group" style="margin-bottom: 1vh;">
+                    <label>CERTIFICATE LINK</label>
+                    <input type="url" class="form-control" placeholder="Certificate Link" name="CLink" required>
+                  </div>
+
+                </div>
+            </div>
+            <!-- /.card-body -->
+
+            <div class="card-footer" style="background-color: white;">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div id="addprj" class="" style="display: none;">
+      <div class="container-fluid" style="border-radius: 100%;">
+        <div class="row" style="justify-content: center;
+      align-items: center; height: 92vh; background-color:#FFE7C7">
+          <!-- left column -->
+          <div class="col-md-4" style="box-shadow: 6px 6px 20px #00000029;">
+            <!-- general form elements -->
+            <div class="card card-primary" style="margin-bottom: 0;  ">
+              <div class="card-header">
+                <h1 class="card-title" style=" font-family: cursive;">ADD PROJECT</h1>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form method="post" action="project">
+                {% csrf_token %}
+                <div class="card-body" style="font-family: cursive; font-size: x-large;">
+                  <div class="form-group">
+                    <label>PROJECT NAME</label>
+                    <input type="text" class="form-control" placeholder="Enter Project Name" name="PName" required>
+                  </div>
+
+                  <div class="form-group" style="margin-bottom: 1vh;">
+                    <label>PROJECT LINK</label>
+                    <input type="url" class="form-control" placeholder="Project Link" name="PLink" required>
+                  </div>
+
+                </div>
+            </div>
+            <!-- /.card-body -->
+
+            <div class="card-footer" style="background-color: white;">
+              <button type="submit" class="btn btn-primary" style="font-size:2vw">Submit</button>
+            </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div id="addprofile" class="" style="display: none;">
+      <div class="container-fluid" style="border-radius: 100%;">
+        <div class="row" style="justify-content: center; align-items: center; height: 92vh; background-color:#FFE7C7">
+          <!-- left column -->
+          <div class="col-md-4" style="box-shadow: 6px 6px 20px #00000029;">
+            <!-- general form elements -->
+            <div class="card card-primary" style="margin-bottom: 0;">
+              <div class="card-header">
+                <h1 class="card-title" style="font-family: cursive;">ADD CODING PROFILE</h1>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form method="post" , action="profile">
+                {% csrf_token %}
+                <div class="card-body" style="font-family: cursive; font-size: x-large;">
+                  <div class="form-group">
+                    <label>USERNAME</label>
+                    <input type="text" class="form-control" placeholder="Enter USERNAME" name="username" required>
+                  </div>
+                  <div class="form-group">
+                    <label>PROFILE URL</label>
+                    <input type="url" class="form-control" placeholder="PROFILE URL" name="PURL" required>
+                  </div>
+                  <div class="form-group">
+                    <label>WEBSITE</label>
+                    <input type="text" class="form-control" placeholder="WEBSITE" name="Website" required>
+                  </div>
+
+                </div>
+            </div>
+            <!-- /.card-body -->
+
+            <div class="card-footer" style="background-color: white;">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            </form>
+          </div>
+          <h1 id ="temmm">
+          </h1>
+
+          <script type=" text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+          <script>
+            i = 0;
+            
+            var x = document.getElementsByClassName("added");
+
+            function addskill() {
+              x[i].style.display = "block";
+              i++;
+              document.getElementById("remove").style.display = "inline";
+            }
+            google.charts.load('current', {
+              'packages': ['bar']
+            });
+            google.charts.setOnLoadCallback(drawStuff);
+
+            function drawStuff() {
+              var data = [
+              {% for marks in context.marks %}
+             
+              ]
+              {% comment %} console.log(data); {% endcomment %}
+              var data = new google.visualization.arrayToDataTable([
+                ['Semester', 'marks'],
+                ["Semester1",{{marks.sem1}}],
+                ["Semester2",{{marks.sem2}}],
+                ["Semester3", {{marks.sem3}}],
+                ["Semester4", {{marks.sem4}}],
+                ["Semester5", {{marks.sem5}}],
+                ["Semester6", {{marks.sem6}}],
+                ["Semester7",{{marks.sem7}}],
+                ["Semester8", {{marks.sem8}}],
+              ]);
+              {% endfor %}
+
+              var options = {
+                title: 'Semester marks',
+
+                legend: {
+                  position: 'none'
+                },
+                bars: 'vertical', // Required for Material Bar Charts.
+                axes: {
+                  y: {
+                    0: {
+                      label: 'marks'
+                    } // Top x-axis.
+                  }
+                },
+                bar: {
+                  groupWidth: "90%"
+                }
+
+              };
+
+              var chart = new google.charts.Bar(document.getElementById('sem'));
+              chart.draw(data, options);
+            };
+
+
+            let gradients = [
+              "linear-gradient(180deg, #6A11CB 0%, #2575FC 100%)",
+              "transparent linear-gradient(180deg, #30CFD0 0%, #330867 100%)",
+              "transparent linear-gradient(180deg, #453A94 0%, #F43B47)",
+              "transparent linear-gradient(180deg, #6A11CB 0%, #FA71CD 100%)",
+              "transparent linear-gradient(180deg, #FF0844 0%, #FFB199 100%)",
+              "transparent linear-gradient(180deg, #453A94 50%,#F43B47 100%)",
+              "transparent linear-gradient(180deg, #6A11CB 0%, #FA71CD 100%)",
+              "transparent linear-gradient(180deg, #30CFD0 0%, #330867 100%)",
+            ];
+
+            let courseCards = document.getElementsByClassName("crs_card");
+
+            for (var index = 0; index < courseCards.length; index++) {
+              courseCards[index].style.background = gradients[index];
+            }
+
+            function SlideRightPlease(x) {
+              var crsWrap = x.parentElement;
+              crsWrap.scrollTo(500, 0);
+              let
+                cptcrsTech = document.querySelectorAll(".tech_crs .crs_card_wrap .crs_card");
+              let
+                cptcrsNontech = document.querySelectorAll(".non_tech_crs .crs_card_wrap .crs_card");
+              if (crsWrap.parentElement.classList.contains("tech_crs")) {
+                for (var i = 0; i < cptcrsTech.length; i++) {
+                  if (cptcrsTech[i].classList.contains("crs_hig") && i < 3) {
+                    cptcrsTech[i].classList.remove("crs_hig");
+                    cptcrsTech[i +
+                      1].classList.add("crs_hig");
+                    break;
+                  }
+                }
+                cptcrsTech.item(3).classList.remove("crs_non_hig");
+                cptcrsTech.item(0).classList.add("crs_non_hig");
+                if (cptcrsTech[0].classList.contains("crs_hig")) {
+                  document.getElementsByClassName("sld_lft")[0].style.display = "none";
+                } else {
+                  document.getElementsByClassName("sld_lft")[0].style.display = "flex";
+                }
+                if (cptcrsTech[3].classList.contains("crs_hig")) {
+                  document.getElementsByClassName("sld_rgt")[0].style.display = "none";
+                } else {
+                  document.getElementsByClassName("sld_rgt")[0].style.display = "flex";
+                }
+              }
+              if (crsWrap.parentElement.classList.contains("non_tech_crs")) {
+                for (var i = 0; i < cptcrsNontech.length; i++) {
+                  if (cptcrsNontech[i].classList.contains("crs_hig") && i < 3) {
+                    cptcrsNontech[i].classList.remove("crs_hig");
+                    cptcrsNontech[i + 1].classList.add("crs_hig");
+                    break;
+                  }
+                }
+                cptcrsNontech.item(3).classList.remove("crs_non_hig");
+                cptcrsNontech.item(0).classList.add("crs_non_hig");
+                if (cptcrsNontech[0].classList.contains("crs_hig")) {
+                  document.getElementsByClassName("sld_lft")[1].style.display = "none";
+                } else {
+                  document.getElementsByClassName("sld_lft")[1].style.display = "flex";
+                }
+                if (cptcrsNontech[3].classList.contains("crs_hig")) {
+                  document.getElementsByClassName("sld_rgt")[1].style.display = "none";
+                } else {
+                  document.getElementsByClassName("sld_rgt")[1].style.display = "flex";
+                }
+              }
+            }
+
+            function SlideLeftPlease(x) {
+              var
+                crsWrap = x.parentElement;
+              crsWrap.scrollTo(-500, 0);
+              let
+                cptcrsTech = document.querySelectorAll(".tech_crs .crs_card_wrap .crs_card");
+              let
+                cptcrsNontech = document.querySelectorAll(".non_tech_crs .crs_card_wrap .crs_card");
+              if (crsWrap.parentElement.classList.contains("tech_crs")) {
+                for (var i = 3; i < cptcrsTech.length; i--) {
+                  if (cptcrsTech[i].classList.contains("crs_hig") && i > 0) {
+                    cptcrsTech[i].classList.remove("crs_hig");
+                    cptcrsTech[i - 1].classList.add("crs_hig");
+                    break;
+                  }
+                }
+                cptcrsTech.item(0).classList.remove("crs_non_hig");
+                cptcrsTech.item(3).classList.add("crs_non_hig");
+
+                if (cptcrsTech[0].classList.contains("crs_hig")) {
+                  document.getElementsByClassName("sld_lft")[0].style.display = "none";
+                } else {
+                  document.getElementsByClassName("sld_lft")[0].style.display = "flex";
+                }
+
+                if (cptcrsTech[3].classList.contains("crs_hig")) {
+                  document.getElementsByClassName("sld_rgt")[0].style.display = "none";
+                } else {
+                  document.getElementsByClassName("sld_rgt")[0].style.display = "flex";
+                }
+              }
+
+              if (crsWrap.parentElement.classList.contains("non_tech_crs")) {
+                for (var i = 3; i < cptcrsNontech.length; i--) {
+                  if (cptcrsNontech[i].classList.contains("crs_hig") && i > 0) {
+                    cptcrsNontech[i].classList.remove("crs_hig");
+                    cptcrsNontech[i - 1].classList.add("crs_hig");
+                    break;
+                  }
+                }
+                cptcrsNontech.item(0).classList.remove("crs_non_hig");
+                cptcrsNontech.item(3).classList.add("crs_non_hig");
+
+                if (cptcrsNontech[0].classList.contains("crs_hig")) {
+                  document.getElementsByClassName("sld_lft")[1].style.display = "none";
+                } else {
+                  document.getElementsByClassName("sld_lft")[1].style.display = "flex";
+                }
+
+                if (cptcrsNontech[3].classList.contains("crs_hig")) {
+                  document.getElementsByClassName("sld_rgt")[1].style.display = "none";
+                } else {
+                  document.getElementsByClassName("sld_rgt")[1].style.display = "flex";
+                }
+              }
+            }
+
+            function courses() {
+              document.getElementById("course").style.display = "initial"
+
+              document.getElementById("project").style.display = "none"
+
+              document.getElementById("placements").style.display = "none"
+              document.getElementById("company").style.display = "none"
+            }
+
+            function project() {
+              document.getElementById("project").style.display = "initial"
+
+              document.getElementById("course").style.display = "none"
+
+              document.getElementById("placements").style.display = "none"
+              document.getElementById("company").style.display = "none"
+            }
+
+            function placements() {
+
+              document.getElementById("project").style.display = "none"
+
+              document.getElementById("course").style.display = "none"
+
+              document.getElementById("placements").style.display = "initial"
+              document.getElementById("company").style.display = "none"
+            }
+
+            function company() {
+              document.getElementById("company").style.display = "initial"
+
+              document.getElementById("project").style.display = "none"
+
+              document.getElementById("course").style.display = "none"
+
+              document.getElementById("placements").style.display = "none"
+            }
+
+
+            function addcrs() {
+              document.getElementsByClassName("con")[0].style.display = "none";
+              document.getElementById("addcrs").style.display = "initial";
+              document.getElementById("addprj").style.display = "none";
+              document.getElementById("addprofile").style.display = "none"
+            }
+
+            function addprj() {
+              document.getElementsByClassName("con")[0].style.display = "none"
+              document.getElementById("addprj").style.display = "initial"
+              document.getElementById("addcrs").style.display = "none";
+              document.getElementById("addprofile").style.display = "none"
+            }
+
+            function addprofile() {
+              document.getElementById("addprofile").style.display = "initial";
+              document.getElementsByClassName("con")[0].style.display = "none";
+              document.getElementById("addprj").style.display = "none"
+              document.getElementById("addcrs").style.display = "none";
+            }</script>
+
+
+
+          <script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+          <!-- jQuery UI 1.11.4 -->
+          <script src="{% static 'plugins/jquery-ui/jquery-ui.min.js' %}"></script>
+
+          <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+          <script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+
+
+</body>
+
+</html>

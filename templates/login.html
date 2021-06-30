@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    @font-face {
+      font-family: "Proxima-Nova";
+      src: url("../static/fonts/ProximaNovaRegular.otf");
+    }
+
+    @font-face {
+      font-family: "Avenir-Next";
+      src: url("../static/fonts/AvenirNextBold.otf");
+      font-weight: Bold;
+    }
+
+    @font-face {
+      font-family: "Avenir-Next";
+      src: url("../static/fonts/AvenirNextRegular.otf");
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    /* Firefox */
+    input[type="number"] {
+      -moz-appearance: textfield;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: #418afa !important;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color: #000000;
+    }
+
+    /* COMMON */
+    button {
+      transition: 0.2s;
+      outline: none;
+      cursor: pointer;
+      border: none;
+      background-color: transparent;
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+
+    input,
+    select {
+      outline: none;
+      border: 2px solid #707070;
+      border-radius: 9px;
+      color: #000000e8;
+      padding-left: 5%;
+      background-color: white;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: #418afa !important;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    /* 
+signin.css */
+    /* SIGN_IN - 1920px START */
+
+    .title {
+      background-color: white;
+      height: 6vh;
+      box-shadow: 6px 6px 20px #00000029;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .title a img {
+      height: 4vh;
+    }
+
+    .bgimg {
+      height: 94vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: url("../static/images/background.jpg");
+    }
+
+    .signin-parent {
+      width: 40%;
+      height: 50vh;
+      background: white;
+      box-shadow: 6px 6px 25px #00000029;
+      border-radius: 54px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+    }
+
+    .signin-parent input[type="number"],
+    input[type="password"] {
+      margin: 3vh auto;
+      margin-bottom: 0;
+      padding-left: 20px;
+      width: 80%;
+      height: 6vh;
+      background: #ffffffe8;
+      border: 2px solid #707070;
+      border-radius: 9px;
+      font-size: 20px;
+    }
+
+    .sign-heading {
+      width: 80%;
+      margin: 0 auto;
+      padding-top: 35px;
+      font: Bold 60px Avenir-Next;
+      color: #408cff;
+    }
+
+    .signin-btn {
+      margin: auto;
+      margin-top: 5%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 7vh;
+      width: 85%;
+      background: #00dc67;
+      text-align: center;
+      box-shadow: 6px 6px 20px #00000029;
+      border-radius: 15px;
+      font: Bold 21px Product-Sans;
+      color: #ffffff;
+    }
+
+    @media screen and (max-width: 1366px) {
+
+      .signin-parent input[type="number"],
+      input[type="password"] {
+        font-size: 18px;
+      }
+
+      .sign-heading {
+        font: Bold 45px Avenir-Next;
+      }
+
+      .signin-btn {
+        font: Bold 18px Proxima-Nova;
+        color: #ffffff;
+      }
+    }
+
+    /* Media for tablets */
+    @media only screen and (max-width: 768px) {
+      .signin-parent {
+        width: 90%;
+        border-radius: 44px;
+        margin: 15vh auto;
+      }
+
+      .sign-inputbx1 {
+        height: 5vh;
+        font-size: 4vw;
+        margin: 10px auto;
+      }
+
+      .sign-inputbx2 {
+        height: 5vh;
+        font-size: 4vw;
+        margin: 10px auto;
+      }
+
+      .signin-subdiv {
+        margin: auto;
+        display: flex;
+        flex-direction: row;
+      }
+
+      .signin-btn {
+        height: 6vh;
+        width: 90%;
+      }
+
+      .signin-social-med {
+        width: 70%;
+      }
+    }
+
+    /* Media for big tabs */
+    @media only screen and (max-width: 918px) {
+      .signin-parent {
+        width: 90%;
+        border-radius: 44px;
+        margin: 15vh auto;
+      }
+
+      .sign-inputbx1 {
+        height: 5vh;
+        font-size: 4vw;
+        margin: 10px auto;
+      }
+
+      .sign-inputbx2 {
+        height: 5vh;
+        font-size: 4vw;
+        margin: 10px auto;
+      }
+
+      .signin-subdiv {
+        margin: auto;
+        display: flex;
+        flex-direction: row;
+      }
+
+      .signin-btn {
+        height: 6vh;
+        width: 90%;
+      }
+
+      .signin-social-med {
+        width: 70%;
+      }
+    }
+  </style>
+  <title>Login</title>
+</head>
+
+<body>
+  <div class="title"><a href=""><img src="../static/images/download.png" alt=""></a></div>
+  <div class="bgimg">
+    <form class="signin-parent" id="user-login-form" method="post" action="login">
+      {% csrf_token %}
+      <h1 class="sign-heading">Sign in</h1>
+      <input type="number" placeholder="Roll-Number" name="username" autofocus />
+      <input type="password" placeholder="Password" name="password" />
+
+      <button class="signin-btn" type="submit">Sign in</button>
+      {% for message in messages %}
+      <p style="color:red">&nbsp;&nbsp;&nbsp;&nbsp;INVALID USERNAME OR PASSWORD</p>
+     {% endfor %}
+
+    </form>
+  </div>
+</body>
+
+</html>

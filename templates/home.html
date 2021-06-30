@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  {%load static%}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{%static 'home.css' %}">
+  <link rel=" stylesheet" href="{% static 'bootstrap-5.0.1-dist/bootstrap-5.0.1-dist/css/bootstrap.min.css'%}">
+  <link rel="stylesheet" href="{% static 'plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css' %}">
+
+  {% load static %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="{% static 'plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css' %}">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="{% static 'plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="{% static 'plugins/jqvmap/jqvmap.min.css' %}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="{% static 'plugins/overlayScrollbars/css/OverlayScrollbars.min.css' %}">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="{% static 'plugins/daterangepicker/daterangepicker.css' %}">
+  <!-- summernote -->
+  <link rel="stylesheet" href="{% static 'plugins/summernote/summernote-bs4.min.css' %}">
+  <title>Home</title>
+</head>
+
+<body>
+
+  {%load static%}
+  <nav class="navbar navbar-expand-lg navbar-light ">
+    <a class="navbar-brand" href="#"><span style="color:blue;">TNP Portal</span></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+      aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto" style="margin: auto !important;">
+        <li class="nav-item">
+          <a class="nav-link" href="">Home</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" onclick="ScrollHandler('.about-us') " style="cursor: pointer;">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" onclick="ScrollHandler('.qry-heading')" style="cursor: pointer;">Contact Us</a>
+        </li>
+        <li><a class="nav-link" href="adminlogin">ADMIN</a></li>
+      </ul>
+      <div id="cntrl_img">
+        <form class="home-sign " method="post" action="login">
+          {% csrf_token %}
+          <input type="number" placeholder="Roll-Number" name="urollno" autofocus />
+          <input type="password" placeholder="Password" name="uPass" />
+
+          <button type="submit">Sign in</button>
+        </form>
+        <p>Not yet registered?<a href="./register">click here</a></p>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="content-wrap">
+    <!-- GET SKILLS -->
+    <div class="get-skills">
+      <div class="get-skills-heading">
+        Getting Placements has never been easier
+      </div>
+      <div class="get-skills-platform">
+        We are here to make your future bright !!!
+      </div>
+      <div class="skill-illustrate"><img src="{% static 'images/flame.png' %}" alt=""></div>
+      <div class="skill-handle">
+        <a href="./register">
+
+          <button id="skill-register">
+            Register
+          </button>
+        </a>
+        <a href="./login">
+          <button id="skill-offers"> Login</button>
+        </a>
+      </div>
+    </div>
+    <div class="about-us">
+      <h1>About Us</h1>
+      <div class="about-us-block">
+        <div class="about-us-illust"><img src="{% static 'images/about-us banner.jpg' %}" alt=""></div>
+        <p class="about-us-para">
+          TNP Portal is a platform which aims for the bright and secure future of under graduate students of
+          MAIT. Here, students of MAIT can register to keep themselves updated about the Placements of the
+          Institute. They can get information about past placements as well as upcoming companies through the
+          portal.
+
+        </p>
+      </div>
+      <div class="about-us-imgs">
+        <div>
+          <img src="{% static 'images/svgs/lecture.svg' %}" alt="" />
+          <div>
+            Proper Guidance <br />
+            for Placements
+          </div>
+        </div>
+        <div>
+          <img src="{% static 'images/svgs/raise-hand.svg' %}" alt="" />
+          <div>
+            150+ students <br />
+            Placed
+          </div>
+        </div>
+        <div>
+          <img src="{% static 'images/svgs/faculty.svg' %}" alt="" />
+          <div>
+            50+ Companies <br />
+            for students
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="our-team">
+      <h1>Our Team</h1>
+      <div class="our-team-row">
+        <div class="team-member">
+          <div class="member-img"><img src={% static 'images/1609861391867_5.jpg' %} alt=""></div>
+          <h3>Suraj Mamgai</h3>
+        </div>
+        <div class="team-member">
+          <div class="member-img"><img src="{% static 'images/photo.jpg' %}" alt=""></div>
+          <h3>Chirag Shangle</h3>
+        </div>
+        <div class="team-member">
+          <div class="member-img" style="height: 30vh; width: 30vh; object-fit: cover;"><img src="{% static 'images/IMG_20201011_145343.jpg' %}" alt=""></div>
+          <h3>Swastik Jain</h3>
+        </div>
+      </div>
+    </div>
+    <h1 class="qry-heading">In case of queries, contact us</h1>
+    <div class="qry-content">
+      <div class="qry-img">
+        <img src="{% static 'images/query.png' %}" alt="" />
+      </div>
+      <form class="contact" id="contactForm" action="mailuser" method="post">
+        {% csrf_token %}
+
+        <div class="qry-enter-data">
+          <input type="text" class="qry-data" name="name" placeholder="Full Name" />
+          <input type="email" class="qry-data" name="email" placeholder="Email address" />
+          <input type="tel" class="qry-data" name="phoneNumber" placeholder="Contact Number" />
+          <textarea name="message" class="qry-data" placeholder="Message"></textarea>
+        </div>
+        <button type="submit" class="qry-submit">Submit Details</button>
+    </div>
+    </form>
+  </div>
+  </div>
+  </div>
+  </div>
+  <footer style="height:5vh ;display: flex; justify-content: flex-end;align-items: center;">
+    <button><img src="../static/images/svgs/next.svg" style="transform: rotate(270deg);" alt=""
+        onclick="ScrollHandler('.navbar')"></button>
+  </footer>
+
+
+  <script>
+    const ScrollHandler = (ElemID) => {
+      let elem = document.querySelector(ElemID);
+      console.log(elem);
+      elem.scrollIntoView();
+    };
+  </script>
+
+  <script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'plugins/jquery-ui/jquery-ui.min.js' %}"></script>
+  <script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+
+</html>

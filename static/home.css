@@ -1,0 +1,983 @@
+@font-face {
+    font-family: "Proxima-Nova";
+    src: url("../static/fonts/ProximaNovaRegular.otf");
+}
+
+@font-face {
+    font-family: "Avenir-Next";
+    src: url("../static/fonts/AvenirNextBold.otf");
+    font-weight: Bold;
+}
+
+@font-face {
+    font-family: "Avenir-Next";
+    src: url("../static/fonts/AvenirNextRegular.otf");
+}
+
+button {
+    transition: 0.2s;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* Custom Checkbox */
+
+/* The container */
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 18px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+
+/* On mouse-over, add a grey background color */
+.container:hover input~.checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked~.checkmark {
+    background-color: #2196f3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked~.checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/* Custom Checkbox */
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.content-wrap {
+    margin: 0 auto;
+    width: 80%;
+}
+
+a {
+    text-decoration: none;
+}
+
+input,
+select {
+    outline: none;
+    border: 2px solid #707070;
+    border-radius: 9px;
+    color: #000000e8;
+    padding-left: 5%;
+    background-color: white;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+input:focus,
+select:focus {
+    border-color: #418afa !important;
+}
+
+nav {
+    background-color: #DDDDF2 !important;
+}
+
+.nav-link {
+    color: black !important;
+    font-size: large;
+    font-weight: bold;
+}
+
+.nav-link:hover {
+    color: red !important;
+}
+
+/* social login buttons */
+
+/* 
+header */
+/* #Head {
+    width: 100%;
+    background-color: white;
+    box-shadow: 0px 10px 61px #00000017;
+  }
+
+  #Head * {
+    display: flex;
+    align-items: center;
+  }
+
+  .sub-head {
+    justify-content: space-evenly;
+    margin: auto;
+    width: 100%;
+    position: relative;
+  }
+
+  .logo-container {
+    justify-content: center;
+  }
+
+  .logo-container a {
+    justify-content: center;
+  }
+
+  .LogoOnly {
+    width: 200px;
+    height: 53px;
+    margin-right: 10px;
+  }
+
+  .LogoFont {
+    width: 184px;
+    height: 36px;
+  }
+
+  .header-menu {
+    font: Bold 18px Proxima-Nova;
+    width: 50%;
+  }
+
+  .header-menu ul li {
+    cursor: pointer;
+    margin-right: 40px;
+    height: 22px;
+    color: black;
+  }
+
+  .header-menu ul li a {
+    color: black;
+  } */
+
+
+.contact-container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.qry-heading {
+    text-align: center;
+    font: bold 71px Avenir-Next;
+    color: #6a11cb;
+
+    margin-bottom: 10vh;
+}
+
+.qry-img {
+    width: 50%;
+}
+
+.qry-img img {
+    width: 100%;
+    height: 100%;
+}
+
+.qry-content {
+    width: 82%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10vh;
+}
+
+.contact {
+    width: 45%;
+}
+
+.qry-data {
+    font: 20px Proxima-Nova;
+    width: 95%;
+    margin-top: 34px;
+    height: 5vh;
+    color: #000000e8;
+    opacity: 0.7;
+    background: #ffffffe8;
+    border: 2px solid #707070;
+    border-radius: 9px;
+    padding-left: 22px;
+}
+
+.qry-contact div {
+    font: 20px Proxima-Nova;
+}
+
+.qry-contact {
+    display: flex;
+    justify-content: center;
+    /* width: 55%;*/
+    width: 60%;
+    border: 2px solid #707070;
+    border-radius: 9px;
+    font-size: 20px;
+    color: #000000e8;
+    opacity: 0.7;
+    align-items: center;
+}
+
+.qry-contact input {
+    border: none;
+    padding-left: 5px;
+    color: #000000e8;
+    opacity: 0.7;
+    font: Bold 20px Proxima-Nova;
+}
+
+.qry-submit {
+    margin-top: 34px;
+    height: 5vh;
+    width: 100%;
+    font: Bold 21px Proxima-Nova;
+    color: #ffffff;
+    background: #00dc67;
+    box-shadow: 6px 6px 20px #00000029;
+    border-radius: 15px;
+}
+
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    scroll-behavior: smooth;
+}
+
+a {
+    color: #000000;
+}
+
+/* COMMON */
+button {
+    transition: 0.2s;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* about.css */
+
+.about-us {
+    width: 100%;
+    margin-top: 5vh;
+}
+
+.about-us h1 {
+    font-size: 72px;
+    font-weight: bold;
+    font-family: Avenir-Next;
+    text-align: center;
+    color: #408cff;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.about-us-block {
+    display: flex;
+    margin: 5vh auto;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.about-us-illust {
+    width: 40%;
+}
+
+.about-us-illust img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.about-us-para {
+    font: 45px Proxima-Nova;
+    color: #232323d6;
+    width: 55%;
+}
+
+.about-us-imgs {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.about-us-imgs img {
+    height: 170px;
+    width: 170px;
+}
+
+.about-us-imgs div {
+    text-align: center;
+    align-items: center;
+    color: #3957ed;
+    font: 31px Proxima-Nova;
+}
+
+.our-team {
+    width: 100%;
+    margin-top: 5vh;
+}
+
+.our-team h1 {
+    color: #0065ff;
+    text-align: center;
+    font: Bold 72px Avenir-Next;
+}
+
+.our-team-row {
+    display: flex;
+    width: 95%;
+    flex-wrap: wrap;
+    margin: 2vh auto;
+    justify-content: center;
+}
+
+.team-member {
+    height: 40vh;
+    width: 20%;
+    margin: 0 2vh;
+}
+
+.member-img img {
+    height: 100%;
+    width: 100%;
+    border-radius: 25vh;
+}
+
+.team-member h3 {
+    color: #4e4e4e;
+    font: Bold 34px Proxima-Nova;
+    text-align: center;
+    margin: 1vh;
+}
+
+.team-member h4 {
+    color: #4e4e4e;
+    font: 34px Proxima-Nova;
+    text-align: center;
+    margin: 1vh;
+}
+
+/* home.css */
+.home-sign input {
+    height: 3vh;
+    font-size: medium;
+    width: 8vw;
+}
+
+.home-sign button {
+    height: 4vh;
+    font-size: medium;
+    font-weight: bolder;
+    width: 8vw;
+    border: 2px solid #707070;
+    border-radius: 9px;
+    color: #000000e8;
+    padding-left: 5%;
+    background-color: #408cff;
+}
+
+#cntrl_img {
+    margin-top: 2vh;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 28vw;
+}
+
+#cntrl_img a {
+    color: #408cff;
+}
+
+.home-sign {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+/* SKILL SECTION */
+.get-skills {
+    text-align: center;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.get-skills-heading {
+    font: Bold 60px Avenir-Next;
+    line-height: 75px;
+    width: 55%;
+    color: #408cff;
+}
+
+.get-skills-platform {
+    margin-top: 18px;
+    width: 45%;
+    font: 28px Avenir-Next;
+    line-height: 36px;
+    color: #747474;
+}
+
+.skill-illustrate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.skill-illustrate img {
+    height: 50vh;
+}
+
+.skill-handle button {
+    width: 20vw;
+    height: 8vh;
+    border-radius: 15px;
+    font: Bold 22px Avenir-Next;
+    line-height: 14px;
+}
+
+#skill-register {
+    background-color: #408cff;
+    color: #ffffff;
+    margin-right: 35px;
+}
+
+#skill-offers {
+    margin-left: 35px;
+    background-color: #ffffff;
+    border: 3px solid #464646d6;
+    font: Bold 22px Avenir-Next;
+    color: #464646d6;
+
+
+}
+
+@media screen and (max-width: 1366px) and (min-width:1201px) {
+
+
+
+    .home-sign input {
+        font-size: 15px;
+        padding-left: 1%;
+    }
+
+    .home-sign button {
+        height: 4vh;
+        font-size: medium;
+        font-weight: bolder;
+        width: 8vw;
+        border: 2px solid #707070;
+        border-radius: 9px;
+        color: #000000e8;
+        padding-left: 5%;
+        background-color: #408cff;
+    }
+
+    #cntrl_img {
+        margin-top: 2vh;
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 28vw;
+    }
+
+    .home-sign {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .get-skills {
+        text-align: center;
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+    }
+
+    .get-skills-heading {
+        font: Bold 50px Avenir-Next;
+        line-height: 50px;
+        width: 50%;
+    }
+
+    .get-skills-platform {
+        margin-top: 10px;
+        width: 45%;
+        font: 22px Avenir-Next;
+        line-height: 36px;
+        color: #747474;
+    }
+
+    .skill-illustrate {
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .skill-illustrate img {
+        height: 45vh;
+    }
+
+    .skill-handle button {
+        width: 20vw;
+        height: 8vh;
+        border-radius: 15px;
+        font: Bold 22px Avenir-Next;
+        line-height: 14px;
+    }
+
+    #skill-register {
+        background-color: #408cff;
+        color: #ffffff;
+        margin-right: 35px;
+    }
+
+    #skill-offers {
+        margin-left: 35px;
+        font: Bold 20px Avenir-Next;
+
+    }
+
+    /* 
+    about us */
+
+    .about-us {
+        margin-top: 5vh;
+    }
+
+    .about-us h1 {
+        font-size: 50px;
+    }
+
+    .about-us-block {
+        display: flex;
+        margin: 5vh auto;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .about-us-illust {
+        color: #4e4e4e;
+        width: 40%;
+    }
+
+    .about-us-illust img {
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .about-us-para {
+        font: 30px Proxima-Nova;
+        color: #232323d6;
+        width: 55%;
+    }
+
+    .about-us-imgs {
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .about-us-imgs img {
+        height: 170px;
+        width: 170px;
+    }
+
+    .about-us-imgs div {
+        text-align: center;
+        align-items: center;
+        color: #3957ed;
+        font: 31px Proxima-Nova;
+    }
+
+    .our-team {
+        width: 100%;
+    }
+
+    .our-team h1 {
+        color: #0065ff;
+        text-align: center;
+        font: Bold 50px Avenir-Next;
+    }
+
+    .our-team-row {
+        display: flex;
+        width: 95%;
+        flex-wrap: wrap;
+        margin: 2vh auto;
+        justify-content: center;
+    }
+
+    .team-member {
+        height: 30vh;
+        width: 20%;
+        margin: 0 2vh;
+    }
+
+    .member-img img {
+        height: 100%;
+        width: 100%;
+        border-radius: 25vh;
+    }
+
+    .team-member h3 {
+        color: #4e4e4e;
+        font: Bold 25px Proxima-Nova;
+        text-align: center;
+        margin: 1vh;
+        /* contact us */
+    }
+
+    .contact-container {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .qry-heading {
+        font: bold 50px Avenir-Next;
+
+    }
+
+    .contact {
+        width: 45%;
+    }
+
+    .qry-data {
+        font: 16px Proxima-Nova;
+        width: 90%;
+        margin-top: 20px;
+    }
+
+    .qry-contact div {
+        font: 18px Proxima-Nova;
+    }
+
+
+    .qry-contact input {
+        font: Bold 18px Proxima-Nova;
+    }
+
+    .qry-submit {
+        margin-top: 20px;
+        height: 5vh;
+        width: 100%;
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 1200px) and (min-width:992px) {
+    .content-wrap {
+        width: 95%;
+        margin: auto;
+    }
+
+    .home-sign input {
+        font-size: 12px;
+        padding-left: 1%;
+    }
+
+    .skill-illustrate img {
+        height: 50vh;
+    }
+
+    .get-skills-heading {
+        font: Bold 60px Avenir-Next;
+        line-height: 45px;
+        width: 100%;
+    }
+
+    .get-skills-platform {
+        margin-top: 20px;
+        width: 40%;
+        margin-bottom: 30px;
+        font: 24px Avenir-Next;
+    }
+
+    .skill-handle button {
+        width: 25vw;
+        height: 8vh;
+        border-radius: 15px;
+        font: Bold 15px Avenir-Next;
+        line-height: 14px;
+    }
+
+    .qry-content {
+        width: 90%;
+        margin: auto;
+        margin-bottom: 10vh;
+    }
+
+    .qry-heading {
+        margin-top: 5vh;
+        font-size: 7vw;
+        margin-bottom: 2vh;
+    }
+
+
+    .qry-img {
+        width: 100%;
+    }
+
+    .contact {
+        width: 100%;
+    }
+
+    .about-us-imgs {
+        width: 80%;
+        margin-bottom: 10vh;
+
+    }
+
+
+
+    .about-us-para {
+        font-size: 2.5vw;
+        width: 40%;
+        margin-top: 20px;
+    }
+
+
+
+
+
+}
+
+@media screen and (min-width: 786px) and (max-width:991px) {
+    .content-wrap {
+        width: 95%;
+        margin: auto;
+    }
+
+    .skill-illustrate img {
+        height: 50vh;
+    }
+
+    .get-skills-heading {
+        font: Bold 60px Avenir-Next;
+        line-height: 45px;
+        width: 100%;
+    }
+
+    .get-skills-platform {
+        margin-top: 20px;
+        width: 40%;
+        margin-bottom: 30px;
+        font: 24px Avenir-Next;
+    }
+
+    .skill-handle button {
+        width: 25vw;
+        height: 8vh;
+        border-radius: 15px;
+        font: Bold 15px Avenir-Next;
+        line-height: 14px;
+    }
+
+    .qry-content {
+        width: 90%;
+        margin: auto;
+        margin-bottom: 10vh;
+    }
+
+    .qry-heading {
+        margin-top: 5vh;
+        font-size: 7vw;
+        margin-bottom: 2vh;
+    }
+
+
+    .qry-img {
+        width: 100%;
+    }
+
+    .contact {
+        width: 100%;
+    }
+
+    .about-us-imgs {
+        width: 80%;
+        margin-bottom: 10vh;
+
+    }
+
+
+
+    .about-us-para {
+        font-size: 2.5vw;
+        width: 40%;
+        margin-top: 20px;
+    }
+
+
+
+
+
+    #cntrl_img {
+        display: none;
+    }
+}
+
+
+@media screen and (max-width: 786px) {
+    .content-wrap {
+        width: 95%;
+        margin: auto;
+    }
+
+    .skill-illustrate img {
+        height: 30vh;
+    }
+
+    .get-skills-heading {
+        font: Bold 40px Avenir-Next;
+        line-height: 45px;
+        width: 100%;
+    }
+
+    .get-skills-platform {
+        margin-top: 10px;
+        width: 60%;
+        font: 20px Avenir-Next;
+        line-height: 20px;
+    }
+
+    .skill-handle button {
+        width: 25vw;
+        height: 8vh;
+        border-radius: 15px;
+        font: Bold 15px Avenir-Next;
+        line-height: 14px;
+    }
+
+    .about-us-illust {
+        width: 80%;
+    }
+
+    .about-us-imgs {
+        width: 80%;
+        flex-direction: column;
+    }
+
+    .qry-heading {
+        margin-top: 5vh;
+        font-size: 7vw;
+        margin-bottom: 2vh;
+    }
+
+    .our-team-row {
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+
+    .qry-img {
+        width: 100%;
+    }
+
+    .contact {
+        width: 100%;
+    }
+
+    .team-member {
+        height: 45vh;
+        width: 40%;
+        margin: auto;
+
+    }
+
+    #cntrl_img {
+        display: none;
+    }
+
+    .about-us-para {
+        font-size: 4vw;
+        width: 80%;
+        margin-top: 20px;
+    }
+
+    .about-us-block {
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    .qry-content {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+
+    .team-member {
+        height: 35vh;
+        width: 50%;
+        margin: auto;
+
+    }
+
+
+}

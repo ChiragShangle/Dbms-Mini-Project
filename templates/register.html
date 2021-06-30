@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    @font-face {
+      font-family: "Proxima-Nova";
+      src: url("../static/fonts/ProximaNovaRegular.otf");
+    }
+
+    @font-face {
+      font-family: "Avenir-Next";
+      src: url("../static/fonts/AvenirNextBold.otf");
+      font-weight: Bold;
+    }
+
+    @font-face {
+      font-family: "Avenir-Next";
+      src: url("../static/fonts/AvenirNextRegular.otf");
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    /* Firefox */
+    input[type="number"] {
+      -moz-appearance: textfield;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: #418afa !important;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color: #000000;
+    }
+
+    /* COMMON */
+    button {
+      transition: 0.2s;
+      outline: none;
+      cursor: pointer;
+      border: none;
+      background-color: transparent;
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+
+
+    input,
+    select {
+      outline: none;
+      border: 2px solid #707070;
+      border-radius: 9px;
+      color: #000000e8;
+      padding-left: 5%;
+      background-color: white;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: #418afa !important;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+
+    /* 
+  signup.css */
+    /*  -------------------------------------*/
+    .title {
+      background-color: white;
+      height: 6vh;
+      box-shadow: 6px 6px 20px #00000029;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .title a img {
+      height: 4vh;
+    }
+
+    .back-btn {
+      justify-content: left;
+      width: 90%;
+    }
+
+    .bgimg a {
+      font-size: 20px;
+      color: black;
+    }
+
+    .bgimg {
+      height: 94vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-image: url("../static/images/background.jpg");
+    }
+
+    .register-container {
+      width: 30%;
+      background-color: white;
+      border-radius: 55px;
+      box-shadow: 10px 10px 10px #000000;
+      padding: 3.5vh 5%;
+    }
+
+    .register-container input {
+      box-sizing: border-box;
+      width: 100%;
+      height: 5vh;
+      margin: 2vh 0 0 5px;
+      font: Bold 20px Proxima-Nova;
+    }
+
+    .register-container h1 {
+      font: Bold 40px Avenir-Next;
+      color: #408cff;
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .input-flexer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .input-flexer select {
+      width: 100%;
+    }
+
+    .contact-info {
+      position: relative;
+      width: 100%;
+    }
+
+    .dial {
+      font: Bold 20px Proxima-Nova;
+    }
+
+    .contact-info div {
+      position: absolute;
+      top: 46%;
+      left: 25px;
+    }
+
+    #cont-pad {
+      padding-left: 65px;
+    }
+
+    .input-flexer select {
+      height: 50px;
+      font: Bold 20px Proxima-Nova;
+      margin-top: 2vh;
+    }
+
+    .contact-info input {
+      border: 2px solid #707070;
+      width: 100%;
+    }
+
+    .update {
+      display: flex;
+      margin: 2vh auto;
+      font: 15px Proxima-Nova;
+    }
+
+    .register button {
+      width: 100%;
+      margin-top: 5%;
+      margin-left: 1%;
+      height: 65px;
+      background: #00dc67;
+      box-shadow: 6px 6px 20px #00000029;
+      border-radius: 15px;
+      font: Bold 24px Product-Sans;
+      color: #ffffff;
+    }
+
+    .skills input {
+      width: 45%;
+    }
+
+    .added {
+      width: 45%;
+    }
+
+    .added input {
+      padding-left: 10%;
+      width: 100%;
+    }
+
+    .skills {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .skills button {
+      box-sizing: border-box;
+      width: 45%;
+      height: 50px;
+      margin: 2vh 0 0 5px;
+      font: Bold 20px Proxima-Nova;
+    }
+
+    @media only screen and (max-width: 1366px) {
+
+      .register-container input {
+        font: Bold 18px Proxima-Nova;
+      }
+
+      .register-container h1 {
+        font: Bold 30px Avenir-Next;
+        color: #408cff;
+        margin-top: 0;
+        margin-bottom: 10px;
+      }
+
+      .dial {
+        font: Bold 18px Proxima-Nova;
+      }
+
+      .input-flexer select {
+        height: 5vh;
+        font: Bold 18px Proxima-Nova;
+        margin-top: 2vh;
+      }
+
+      .contact-info input {
+        border: 2px solid #707070;
+        width: 100%;
+      }
+
+      .register button {
+        height: 6vh;
+        font: Bold 20px Proxima-Nova;
+      }
+    }
+
+    /* Media for tablets */
+    @media only screen and (max-width: 480px) {
+      .register-container {
+        width: 80%;
+        margin: 15vh auto;
+        border-radius: 40px;
+      }
+
+      .input-flexer {
+        flex-direction: column;
+      }
+
+      .input-flexer input {
+        display: flex;
+        flex-direction: column;
+        width: 100% !important;
+      }
+
+      .input-flexer select {
+        width: 100%;
+      }
+
+      .register {
+        width: 90%;
+      }
+
+      .add-input {
+        font-size: 4vw;
+      }
+
+      .contact-info {
+        font-size: 2vw;
+      }
+
+      .contact-info div {
+        font-size: 4vw;
+      }
+
+      .su-divider hr {
+        width: 25%;
+        height: 2px;
+      }
+
+      .register-container h5 {
+        font-size: 5vw;
+      }
+    }
+
+    /* Media for tablets */
+    @media only screen and (max-width: 768px) and (min-width:481px) {
+      .register-container {
+        width: 80%;
+        border-radius: 40px;
+      }
+
+      .input-flexer {
+        display: flex;
+      }
+
+      .input-flexer input {
+        width: 100% !important;
+      }
+
+      .input-flexer select {
+        width: 100%;
+      }
+
+      .register {
+        width: 90%;
+      }
+
+      .add-input {
+        font-size: 4vw;
+      }
+
+      .contact-info {
+        font-size: 2.8vw;
+      }
+
+      .contact-info div {
+        font-size: 4vw;
+      }
+
+      .su-divider hr {
+        width: 25%;
+        height: 2px;
+      }
+
+      .register-container h5 {
+        font-size: 5vw;
+      }
+    }
+
+    /* Media for big tabs */
+    @media only screen and (max-width: 918px) and (min-width:769px) {
+
+      .register-container {
+        width: 80%;
+        margin: 15vh auto;
+        border-radius: 40px;
+      }
+
+      .input-flexer {
+        flex-direction: row;
+      }
+
+      .input-flexer input {
+        width: 100% !important;
+      }
+
+      .input-flexer select {
+        width: 100%;
+      }
+
+      .register {
+        width: 90%;
+      }
+
+      .add-input {
+        font-size: 4vw;
+      }
+
+      .contact-info {
+        font-size: 3vw;
+      }
+
+      .contact-info div {
+        font-size: 4vw;
+      }
+
+      .su-divider hr {
+        width: 25%;
+        height: 2px;
+      }
+
+      .register-container h5 {
+        font-size: 5vw;
+      }
+    }
+
+    @media only screen and (max-width: 1200px) and (min-width:919px) {
+      .cont {
+        width: 70%;
+      }
+
+      .register-container {
+        width: 70%;
+        margin: 15vh auto;
+        border-radius: 40px;
+      }
+
+      .input-flexer {
+        flex-direction: row;
+      }
+
+      .input-flexer input {
+        width: 100% !important;
+      }
+
+      .input-flexer select {
+        width: 100%;
+      }
+
+      .register {
+        width: 90%;
+      }
+
+      .add-input {
+        font-size: 4vw;
+      }
+
+      .contact-info {
+        font-size: 3vw;
+      }
+
+      .contact-info div {
+        font-size: 4vw;
+      }
+
+      .su-divider hr {
+        width: 25%;
+        height: 2px;
+      }
+
+      .register-container h5 {
+        font-size: 5vw;
+      }
+    }
+  </style>
+  <title>Register</title>
+</head>
+
+<body>
+  <div class="title"><a href="./home"><img src="../static/images/download.png" alt=""></a></div>
+  <div class="bgimg">
+    <div class="register-container">
+      <h1>Create and track your score</h1>
+      <form method="POST" id="user-register-form" class="register" action="register">
+        {% csrf_token %}       
+        <div class="input-flexer">
+        
+          <input type="text" name="ufName" placeholder="First Name" class="add-input" required />
+          <input type="text" name="ulName" placeholder="Last Name" class="add-input" required />
+        </div>
+        <input class="add-input" type="email" name="uEmail" placeholder="Email address" required />
+
+        <input class="add-input" type="password" name="uPass" placeholder="Password" required />
+
+        <input class="add-input" type="password" name="ucPass" placeholder="Confirm Password" required />
+
+        <input class="add-input" type="number" name="rollno" placeholder="Roll-Number" required />
+        <input placeholder="Date Of Birth" class="add-input" type="text" name="dob"onfocus="(this.type = 'date')" />
+
+        <div class="contact-info">
+          <input type="number" name="upNum" placeholder="Contact Number">
+        </div>
+        <p style="color:red">
+                &nbsp;&nbsp;&nbsp;{{abcd}}
+                </p>
+        <button type="submit">Sign up</button>
+      </form>
+    </div>
+
+</body>
+
+</html>
